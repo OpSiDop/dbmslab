@@ -1,0 +1,136 @@
+Ex. No: 1
+SQL DML COMMANDS
+AIM: To write SQL queries to execute different DML commands.
+Data base created for this exercise is:
+DML Commands:
+ Insert - Used to insert records in the table
+Syntax,
+INSERT into table_name values(value1, value2, …);
+Example,
+SQL&gt; insert into student values(1,&#39;c&#39;,92);
+1 row created.
+ Update - Used to update existing data in the table
+Syntax,
+UPDATE table_name set column1=value1;
+UPDATE table_name set column1=value1 WHERE condition;
+Example,
+SQL&gt; update student set sub=sub-10;
+5 rows updated.
+ Delete - Used to delete records in the table
+Syntax,
+DELETE from student WHERE condition;
+Example,
+SQL&gt; create table employee(id integer, name varchar(10), salary ineteger);
+create table employee(id integer, name varchar(10), salary ineteger)
+*
+ERROR at line 1:
+ORA-00902: invalid datatype
+
+SQL&gt; create table employee(id integer, name varchar(10), salary integer);
+Table created.
+SQL&gt; insert into student values(1,&#39;Akshat&#39;,10,00,000);
+insert into student values(1,&#39;Akshat&#39;,10,00,000)
+*
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+SQL&gt; insert into employee values(1,&#39;Akshat&#39;,10,00,000);
+
+insert into employee values(1,&#39;Akshat&#39;,10,00,000)
+*
+ERROR at line 1:
+ORA-00913: too many values
+
+SQL&gt; insert into employee values(1,&#39;Akshat&#39;,100000);
+1 row created.
+SQL&gt; insert into employee values(2,&#39;Shubhra&#39;,200000);
+1 row created.
+SQL&gt; select * from employee
+2
+SQL&gt; select * from employee;
+ID NAME SALARY
+---------- ---------- ----------
+1 Akshat 100000
+2 Shubhra 200000
+SQL&gt; insert into employee values(3,&#39;Ross&#39;,250000);
+1 row created.
+SQL&gt; insert into employee values(4,&#39;Joey&#39;,150000);
+1 row created.
+SQL&gt; insert into employee values(5,&#39;Chandler&#39;,50000);
+1 row created.
+SQL&gt; select * from employee;
+ID NAME SALARY
+---------- ---------- ----------
+1 Akshat 100000
+2 Shubhra 200000
+3 Ross 250000
+4 Joey 150000
+5 Chandler 50000
+
+SQL&gt; select * from employee where id=3;
+ID NAME SALARY
+---------- ---------- ----------
+3 Ross 250000
+SQL&gt; select * from salary where salary&gt;150000
+2
+SQL&gt; select * from employee where salary&gt;150000;
+ID NAME SALARY
+---------- ---------- ----------
+2 Shubhra 200000
+3 Ross 250000
+SQL&gt; select * from employee order by salary asc;
+ID NAME SALARY
+---------- ---------- ----------
+5 Chandler 50000
+1 Akshat 100000
+4 Joey 150000
+2 Shubhra 200000
+3 Ross 250000
+SQL&gt; select id,name,sum(salary) from employee
+2
+SQL&gt;
+SQL&gt; select id,name,sum(salary) from employee group by name;
+select id,name,sum(salary) from employee group by name
+*
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+SQL&gt; select id,name,sum(salary) from employee group by id;
+select id,name,sum(salary) from employee group by id
+*
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+SQL&gt; select sum(salary) from employee group by id;
+
+SUM(SALARY)
+-----------
+100000
+200000
+150000
+50000
+250000
+SQL&gt; update employee set name=&#39;Shreya&#39; where id=2;
+1 row updated.
+SQL&gt; select * from employee;
+ID NAME SALARY
+---------- ---------- ----------
+1 Akshat 100000
+2 Shreya 200000
+3 Ross 250000
+4 Joey 150000
+5 Chandler 50000
+SQL&gt; delete from employee where name=&#39;Akshat&#39;;
+1 row deleted.
+SQL&gt; select * from employee;
+ID NAME SALARY
+---------- ---------- ----------
+2 Shreya 200000
+3 Ross 250000
+4 Joey 150000
+5 Chandler 50000
+SQL&gt; spool off
+
+Result:
+Thus the DML commands are used to modify or manipulate data records present in the
+customer database tables.
